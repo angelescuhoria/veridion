@@ -1,0 +1,50 @@
+================================================================
+https://billproctorandassociates.com/ domain is not connected to a website yet
+https://www.emmamoorephotography.co.uk/ photography website, not all the data is available
+https://beerock.com/ no address available
+sk4designs.com has a SHIPPING address.
+
+================================================================
+MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 drain listeners added to [WriteStream]. Use
+emitter.setMaxListeners() to increase limit
+weird thing happening, logging multiple times during process
+
+================================================================
+[
+{
+'2021': [ 'Value', 'Cardinal', 'NumericValue', 'Year', 'Date', 'Address' ],
+bloomingdale: [ 'Noun', 'ProperNoun', 'Organization', 'Address' ],
+rd: [
+'Abbreviation',
+'Noun',
+'Singular',
+'Place',
+'ProperNoun',
+'Address'
+]
+}
+[
+{
+'60139': [ 'Value', 'Cardinal', 'NumericValue' ],
+glendale: [ 'Place', 'Noun', 'Singular' ],
+heights: [ 'ProperNoun', 'Noun' ],
+il: [ 'Noun', 'Pronoun' ]
+}
+]
+[
+{
+'811': [ 'Value', 'Cardinal', 'NumericValue' ],
+w: [ 'Acronym', 'Noun' ],
+higgins: [ 'Noun', 'Singular', 'ProperNoun', 'Place' ],
+rd: [ 'Abbreviation', 'Noun', 'Singular', 'Place' ],
+'#': [ 'Noun', 'Singular' ],
+b: [ 'Acronym', 'Noun' ]
+}
+]
+[
+{
+'60195': [ 'Value', 'Cardinal', 'NumericValue' ],
+schaumburg: [ 'Noun', 'Singular' ],
+il: [ 'Noun', 'Pronoun' ]
+}
+]
