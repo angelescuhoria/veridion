@@ -16,6 +16,7 @@
     "express": "^4.19.2",
     "parquets": "^0.10.10",
     "puppeteer": "^22.6.0",
+    "python-shell": "^5.0.0",
     "threads": "^1.7.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
