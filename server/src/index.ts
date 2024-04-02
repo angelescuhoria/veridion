@@ -1,24 +1,14 @@
-import nlp from "compromise";
+import express, { Express, Request, Response } from "express";
 import fs from "fs";
-import { ParquetReader } from "parquets";
 import path from "path";
+import { Options, PythonShell } from "python-shell";
 import { Pool, spawn, Worker } from "threads";
+import { getDomains } from "./scripts/getDomains";
 
-const getDomains = async () => {
-  let domains: Array<string> = [];
-  let reader = await ParquetReader.openFile("./data/data.parquet");
-  let cursor = reader.getCursor();
+const app: Express = express();
+const port = 3001;
 
-  let record = null;
-  while ((record = await cursor.next()) && domains.length < 10) {
-    // add && domains.length < 10 for testing/debugging purposes
-    domains.push(record.domain);
-  }
-
-  return domains;
-};
-
-const main = async () => {
+app.get("/", async (req: Request, res: Response) => {
   try {
     const domains = await getDomains();
     const testFirstTenDomains = Math.min(domains.length, 1); // testing pupropses
@@ -44,6 +34,7 @@ const main = async () => {
 
     pool.completed();
     pool.terminate();
+
     let endTime = performance.now();
     console.log(`Process took ${endTime} milliseconds`);
 
@@ -54,10 +45,10 @@ const main = async () => {
       "utf8"
     );
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error: ", error);
-    } else console.error("Unknown error occurred: ", error);
+    res.status(500).send("An error occurred while processing the request.");
   }
-};
+});
 
-main();
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

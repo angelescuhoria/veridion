@@ -1,19 +1,14 @@
-import nlp from "compromise";
+import { spawn } from "child_process";
 import puppeteer, { Browser, Page } from "puppeteer";
 import { expose } from "threads/worker";
 
 const crawlAndExtractText = async (page: Page) => {
-  const content = await page.evaluate(() => document.body.innerText.trim());
-  return content
-    .split("\n")
-    .map((line) => line.trim())
-    .filter((line) => line !== "");
-};
-
-const extractAddresses = (textContent: string) => {
-  const doc = nlp(textContent);
-  const addresses = doc.match("#Place+");
-  return addresses.text();
+  const content: string = await page.evaluate(() =>
+    document.body.innerText.trim()
+  );
+  let text: string = content.replace(/\n/g, " ");
+  text = text.replace(/\s{2,}/g, " ");
+  return [text.trim()];
 };
 
 const processDomain = async (domain: string) => {
@@ -50,9 +45,6 @@ const processDomain = async (domain: string) => {
       textContents.push(...(await crawlAndExtractText(page)));
     }
 
-    // const addresses = textContents.flatMap(extractAddresses);
-
-    // return addresses;
     return textContents;
   } catch (error) {
     if (error instanceof Error) {
