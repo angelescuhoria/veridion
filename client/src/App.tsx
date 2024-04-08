@@ -8,10 +8,14 @@ export const App: React.FC = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["addresses"],
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:3001/api/getdata");
+      const response = await axios.get("http://localhost:3001/api/getdata");
+      const data = response.data;
       return data;
     },
+    staleTime: 60000,
   });
+
+  console.log(data);
 
   if (isLoading) return <h1>Loading...</h1>;
   if (error) return <h1>Error!</h1>;

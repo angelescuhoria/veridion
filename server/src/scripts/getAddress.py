@@ -1,7 +1,5 @@
 import usaddress
 import sys
-import json
-
 
 def isPhoneNumber(string):
     return '(' in string and ')' in string
